@@ -39,6 +39,36 @@ function playRound(humanChoice, computerChoice) {
 }
 
 
+const buttons = document.querySelectorAll("button");
+
+buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+        let humanSelection = button.id;
+        let computerSelection = getComputerChoice();
+        let result = playRound(humanSelection, computerSelection);
+        if (result === 1) {
+            humanScore++;
+        }
+        else if (result === 2) {
+            computerScore++;
+        }
+        if (humanScore/2 === 5) {
+                alert("You win the game!");
+            }            
+        else if (computerScore/2 === 5) {
+                    alert("You lose the game!");
+                }
+
+        const div = document.querySelector("#score");
+        div.textContent = "Your Score: " + humanScore/2 + " Computer Score: " + computerScore/2;
+        console.log(humanScore/2)
+        console.log(computerScore/2)
+        console.log(result);
+    });
+});
+
+
+/*
 function playGame() {
     for (let i = 0; i < 5; i++){
         let humanSelection = getPlayerChoice();
@@ -63,3 +93,4 @@ function playGame() {
 }
 
 console.log(playGame());
+*/
